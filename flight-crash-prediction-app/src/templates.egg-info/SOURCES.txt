@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/app.py
+src/predict.py
+src/train.py
+src/utils.py
+src/templates.egg-info/PKG-INFO
+src/templates.egg-info/SOURCES.txt
+src/templates.egg-info/dependency_links.txt
+src/templates.egg-info/top_level.txt
