@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Crash Prediction</title>
+</head>
+<body>
+    <h2>Flight Crash Prediction</h2>
+    <form method="post">
+        {% for field in fields %}
+            <label>{{ field.replace('_', ' ').title() }}:</label>
+            <input type="text" name="{{ field }}" required><br><br>
+        {% endfor %}
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction %}
+        <h3>Prediction: {{ prediction }}</h3>
+    {% endif %}
+</body>
+</html>

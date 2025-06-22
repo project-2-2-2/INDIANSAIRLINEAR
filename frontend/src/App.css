@@ -1,0 +1,429 @@
+/* Import a modern, technical-looking font */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+/* IBM Plex Sans is a great choice for a technical, clean look */
+
+/* General Styling */
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif; /* Use the new font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0f172a; /* Dark background, deep charcoal/navy */
+  color: #e2e8f0; /* Light off-white text for contrast */
+  line-height: 1.6;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgba(15, 23, 42, 0.95); /* Slightly transparent dark background */
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(45, 53, 71, 0.6); /* Subtle bottom border */
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #38bdf8; /* Bright tech blue for logo */
+  letter-spacing: -0.5px;
+}
+
+.navbar-logo span[role="img"] {
+  margin-right: 12px;
+  font-size: 2.2rem; /* Slightly larger emoji */
+  color: #6ee7b7; /* Green accent for the plane */
+  animation: planeFloat 3s infinite ease-in-out alternate; /* Smoother, subtle float */
+}
+
+@keyframes planeFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px) rotate(1deg); }
+  100% { transform: translateY(0); }
+}
+
+.navbar-links a {
+  color: #a0aec0; /* Lighter grey for links */
+  text-decoration: none;
+  margin-left: 35px;
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: #38bdf8; /* Underline on hover */
+  transition: width 0.3s ease-out;
+}
+
+.navbar-links a:hover {
+  color: #e2e8f0; /* White on hover */
+  transform: translateY(-2px);
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+
+/* Hero Background for Home and Predict */
+.hero-bg {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 30px;
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%); /* Subtle radial dark gradient */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Abstract background elements - inspired by Databahn's subtle patterns */
+.hero-bg::before,
+.hero-bg::after,
+.hero-bg > div:nth-of-type(1)::before {
+  content: '';
+  position: absolute;
+  opacity: 0.1;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.hero-bg::before { /* Grid/dot pattern */
+  background-image: radial-gradient(#2d3748 1px, transparent 1px);
+  background-size: 20px 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.05;
+}
+
+.hero-bg::after { /* Large, glowing circle */
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+  filter: blur(150px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulseGlow 10s infinite alternate ease-in-out;
+  z-index: 1;
+}
+
+@keyframes pulseGlow {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.15; }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.25; }
+}
+
+
+/* Card Styling */
+.card {
+  background-color: #1e293b; /* Darker blue-grey for cards */
+  border-radius: 12px; /* Slightly less rounded */
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4); /* Deeper, more dramatic shadow */
+  padding: 45px;
+  text-align: center;
+  max-width: 700px; /* Wider card */
+  width: 100%;
+  position: relative; /* For z-index and internal elements */
+  z-index: 10; /* Ensure card is above background elements */
+  border: 1px solid rgba(45, 53, 71, 0.8); /* Subtle border */
+  overflow: hidden; /* To contain background elements within card */
+}
+
+.animated-card {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-card h1 {
+  font-size: 3.5rem; /* Larger, more impactful heading */
+  color: #f8fafc; /* White for main title */
+  margin-bottom: 25px;
+  letter-spacing: -0.05em; /* Tighter letter spacing */
+  background: linear-gradient(90deg, #6ee7b7, #38bdf8); /* Gradient text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block; /* Required for gradient text */
+}
+
+.home-card p {
+  font-size: 1.15rem; /* Slightly larger body text */
+  color: #cbd5e1; /* Lighter grey for body text */
+  line-height: 1.8;
+  margin-bottom: 40px;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-btn {
+  background-color: #38bdf8; /* Bright blue button */
+  color: #0f172a; /* Dark text on bright button */
+  padding: 16px 35px;
+  border: none;
+  border-radius: 8px; /* Slightly less rounded than pill */
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3); /* Subtle blue glow */
+}
+
+.home-btn:hover {
+  background-color: #0ea5e9; /* Slightly darker blue on hover */
+  transform: translateY(-4px); /* More pronounced lift */
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+}
+
+/* Predict Form Styling */
+.card h2 {
+  font-size: 2.5rem;
+  color: #f8fafc;
+  margin-bottom: 35px;
+  letter-spacing: -0.03em;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #a0aec0; /* Lighter grey for labels */
+  font-size: 0.95rem;
+  text-transform: uppercase; /* Uppercase labels */
+  letter-spacing: 0.05em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+  width: calc(100% - 24px); /* Account for padding and border */
+  padding: 14px;
+  border: 1px solid #475569; /* Darker border */
+  border-radius: 6px;
+  font-size: 1.05rem;
+  color: #f8fafc; /* White text in input */
+  background-color: #1a2333; /* Dark input background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus {
+  border-color: #38bdf8; /* Blue focus border */
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2); /* Blue glow on focus */
+  outline: none;
+  background-color: #101825; /* Slightly darker on focus */
+}
+
+.card button[type="submit"] {
+  background-color: #6ee7b7; /* Green accent button */
+  color: #0f172a; /* Dark text on green button */
+  padding: 16px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-top: 30px;
+  box-shadow: 0 6px 20px rgba(110, 231, 183, 0.3); /* Subtle green glow */
+}
+
+.card button[type="submit"]:hover:not(:disabled) {
+  background-color: #34d399; /* Darker green on hover */
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(110, 231, 183, 0.4);
+}
+
+.card button[type="submit"]:disabled {
+  background-color: #475569; /* Darker grey for disabled */
+  color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Prediction Result */
+.result {
+  margin-top: 40px;
+  padding: 25px;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  animation: fadeInDown 0.7s ease-out forwards;
+  border: 1px solid; /* Will be defined by specific classes */
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result h3 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.crash {
+  background-color: #41000b; /* Deep dark red background */
+  color: #ef4444; /* Bright red text */
+  border-color: #ef4444;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); /* Red glow */
+}
+
+.no-crash {
+  background-color: #0a2e1d; /* Deep dark green background */
+  color: #6ee7b7; /* Bright green text */
+  border-color: #6ee7b7;
+  box-shadow: 0 0 15px rgba(110, 231, 183, 0.5); /* Green glow */
+}
+
+/* Footer */
+.footer {
+  background-color: #0b111e; /* Even darker footer */
+  color: #64748b; /* Muted grey text */
+  text-align: center;
+  padding: 25px;
+  font-size: 0.9rem;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(45, 53, 71, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  .navbar-logo {
+    margin-bottom: 15px;
+  }
+
+  .navbar-links a {
+    margin: 0 12px;
+    font-size: 0.95rem;
+  }
+
+  .card {
+    padding: 30px 25px;
+    margin: 20px;
+  }
+
+  .home-card h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-card p {
+    font-size: 1rem;
+  }
+
+  .card h2 {
+    font-size: 2rem;
+  }
+
+  .home-btn,
+  .card button[type="submit"] {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+  }
+
+  .result {
+    font-size: 1.4rem;
+  }
+
+  .result h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo span {
+    font-size: 1.8rem;
+  }
+
+  .navbar-title {
+    font-size: 1.3rem;
+  }
+
+  .navbar-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .navbar-links a {
+    margin: 5px 10px;
+  }
+
+  .card {
+    padding: 25px 15px;
+  }
+
+  .home-card h1 {
+    font-size: 2rem;
+  }
+
+  .home-card p {
+    font-size: 0.95rem;
+  }
+
+  .card h2 {
+    font-size: 1.6rem;
+  }
+
+  .home-btn,
+  .card button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .result {
+    font-size: 1.2rem;
+  }
+
+  .result h3 {
+    font-size: 1.4rem;
+  }
+}
